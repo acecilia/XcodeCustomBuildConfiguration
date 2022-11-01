@@ -1,0 +1,21 @@
+name: Dependency
+
+options:
+  bundleIdPrefix: com.acecilia
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: 13.0
+  defaultConfig: Debug
+
+targets:
+  Dependency:
+    platform: iOS
+    type: framework.static
+    sources:
+      - path: Dependency
+
+schemes:
+  Dependency:
+    build:
+      targets:
+        Dependency: all

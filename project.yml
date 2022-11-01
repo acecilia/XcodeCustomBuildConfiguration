@@ -1,0 +1,64 @@
+name: CustomConfigurationSample
+
+options:
+  bundleIdPrefix: com.acecilia
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: 13.0
+  defaultConfig: Debug
+
+projectReferences:
+  Dependency:
+    path: ./Dependency/Dependency.xcodeproj
+
+configs:
+  Release: release
+  Debug: debug
+  CustomDebug: debug
+  CustomRelease: release
+  CustomDebugWithPodSetup: debug
+  CustomReleaseWithPodSetup: release
+
+targets:
+  CustomConfigurationSampleApp:
+    platform: iOS
+    type: application
+    sources:
+      - path: CustomConfigurationSampleApp
+    dependencies:
+      - target: Dependency/Dependency
+
+schemeTemplates:
+  Basic:
+    build:
+      targets:
+        CustomConfigurationSampleApp: all
+    run:
+      config: ${scheme_name}
+    test:
+      config: ${scheme_name}
+    profile:
+      config: ${scheme_name}
+    analyze:
+      config: ${scheme_name}
+    archive:
+      config: ${scheme_name}
+
+schemes:
+  Debug:
+    templates: [Basic]
+
+  Release:
+    templates: [Basic]
+
+  CustomDebug:
+    templates: [Basic]
+
+  CustomRelease:
+    templates: [Basic]
+
+  CustomDebugWithPodSetup:
+    templates: [Basic]
+
+  CustomReleaseWithPodSetup:
+    templates: [Basic]
